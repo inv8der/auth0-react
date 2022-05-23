@@ -482,7 +482,7 @@ describe('Auth0Provider', () => {
     await waitForNextUpdate();
 
     expect(result.current.user?.name).toEqual('foo');
-    clientMock.getUser.mockResolvedValue({ name: 'bar', updated_at: '2' });
+    clientMock.getUser.mockResolvedValue({ name: 'bar', updated_at: '1' });
     await act(async () => {
       await result.current.getAccessTokenSilently();
     });
