@@ -6,6 +6,7 @@ import external from 'rollup-plugin-peer-deps-external';
 import { terser } from 'rollup-plugin-terser';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import commonjs from '@rollup/plugin-commonjs';
 import pkg from './package.json';
 import analyze from 'rollup-plugin-analyzer';
 import { createApp } from './scripts/oidc-provider';
@@ -22,6 +23,7 @@ const plugins = [
   typescript({ useTsconfigDeclarationDir: true }),
   external(),
   resolve(),
+  commonjs(),
   replace({ __VERSION__: `'${pkg.version}'` }),
   analyze({ summaryOnly: true }),
 ];
@@ -49,7 +51,7 @@ export default [
               port: 3000,
               extend(app, modules) {
                 app.use(modules.mount(createApp({ port: 3000 })));
-              }
+              },
             }),
             livereload(),
           ]),

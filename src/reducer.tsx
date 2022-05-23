@@ -1,3 +1,4 @@
+import deepEqual from 'fast-deep-equal';
 import { User } from '@auth0/auth0-spa-js';
 import { AuthState } from './auth-state';
 
@@ -35,7 +36,7 @@ export const reducer = (state: AuthState, action: Action): AuthState => {
       };
     case 'HANDLE_REDIRECT_COMPLETE':
     case 'GET_ACCESS_TOKEN_COMPLETE':
-      if (state.user?.updated_at === action.user?.updated_at) {
+      if (deepEqual(state.user, action.user)) {
         return state;
       }
       return {
