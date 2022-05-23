@@ -1,6 +1,6 @@
 {
   "author": "Auth0",
-  "name": "@auth0/auth0-react",
+  "name": "@inv8der/auth0-react",
   "version": "1.10.1",
   "description": "Auth0 SDK for React Single Page Applications (SPA)",
   "keywords": [
